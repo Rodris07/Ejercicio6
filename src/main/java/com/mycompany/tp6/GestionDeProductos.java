@@ -1,20 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package com.mycompany.tp6;
+
+import java.util.TreeSet;
 
 /**
  *
  * @author Usuario
  */
 public class GestionDeProductos extends javax.swing.JPanel {
+    
+    private TreeSet <String>listaProductos;
 
     /**
      * Creates new form GestionDeProductos
      */
-    public GestionDeProductos() {
+    public GestionDeProductos(TreeSet <String>lista) {
         initComponents();
+        tfCodigo.setEnabled(false);
+        tfDescripcion.setEnabled(false);
+        tfPrecio.setEnabled(false);
+        jcCategoria.setEnabled(false);
+        jcStock.setEnabled(false);
+        listaProductos= lista;
     }
 
     /**
@@ -55,21 +62,22 @@ public class GestionDeProductos extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Filtrar por categoria");
 
-        JBActualizar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Desktop\\Descargar pichu\\iconos netbeans\\Animated\\Doble visto.png")); // NOI18N
         JBActualizar.setText("Actualizar");
 
         jcCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        JBNuevo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Desktop\\Descargar pichu\\iconos netbeans\\Animated\\Nuevo.png")); // NOI18N
         JBNuevo.setText("Nuevo");
+        JBNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBNuevoActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Gestión de Productos");
 
-        JBGuardar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Desktop\\Descargar pichu\\iconos netbeans\\Animated\\Guardarc.png")); // NOI18N
         JBGuardar.setText("Guardar");
 
-        JBEliminar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Desktop\\Descargar pichu\\iconos netbeans\\eliminar.png")); // NOI18N
         JBEliminar.setText("Eliminar");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -172,7 +180,6 @@ public class GestionDeProductos extends javax.swing.JPanel {
             }
         });
 
-        JBLupa.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Desktop\\Descargar pichu\\iconos netbeans\\Lupa.png")); // NOI18N
         JBLupa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBLupaActionPerformed(evt);
@@ -261,7 +268,7 @@ public class GestionDeProductos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCerrarActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_JBCerrarActionPerformed
 
     private void JBLupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLupaActionPerformed
@@ -275,6 +282,20 @@ public class GestionDeProductos extends javax.swing.JPanel {
     private void tfCodigoTextValueChanged(java.awt.event.TextEvent evt) {//GEN-FIRST:event_tfCodigoTextValueChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_tfCodigoTextValueChanged
+
+    private void JBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBNuevoActionPerformed
+        tfCodigo.setEnabled(true);
+        tfDescripcion.setEnabled(true);
+        tfPrecio.setEnabled(true);
+        jcCategoria.setEnabled(true);
+        jcStock.setEnabled(true);
+        JBLupa.setEnabled(true);
+        JBCerrar.setEnabled(true);
+        JBActualizar.setEnabled(false);
+        JBGuardar.setEnabled(false);
+        JBEliminar.setEnabled(false);
+        JBNuevo.setEnabled(true);
+    }//GEN-LAST:event_JBNuevoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
